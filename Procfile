@@ -1,1 +1,1 @@
-web:nissy-video-tweet
+web: nissy-video-tweet

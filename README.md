@@ -11,10 +11,12 @@
 - Finalize
 - Status(NEW!)
 
+#### UploadVideoInit()
 ```Go:UploadVideoInit.go
 v.Set("media_category", mediaCategory)
 ```
 
+#### UploadVideoStatus()
 ```Go:UploadVideoStatus.go
 type StatusMedia struct {
 	MediaID          int64  `json:"media_id"`
@@ -41,6 +43,7 @@ func (a TwitterApi) UploadVideoStatus(mediaIdString string) (videoMedia StatusMe
 }
 ```
 
+#### upload
 ```Go
 //tweet する際,status部分
 for {

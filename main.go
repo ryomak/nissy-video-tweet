@@ -65,16 +65,8 @@ func regularTweet() {
 	if err != nil {
 		fmt.Printf("err :%v\n", err)
 	}
-	//AAA
-	text := aaa[0].Date + "\n" + aaa[0].Text + aaa[0].URL + " " + aaa[0].Tags
-	err = api.ImageTweet(text, aaa[0].Image)
-	if err != nil {
-		fmt.Printf("err :%v\n", err)
-	}
-	fmt.Printf("%s\n", text)
-	time.Sleep(7200 * time.Second)
 	//Nissy
-	text = nissy[0].Date + "\n" + nissy[0].Text + nissy[0].URL + " " + nissy[0].Tags
+	text := nissy[0].Date + "\n" + nissy[0].Text + nissy[0].URL + " " + nissy[0].Tags
 	err = api.ImageTweet(text, nissy[0].Image)
 	if err != nil {
 		fmt.Printf("err :%v\n", err)
@@ -84,6 +76,14 @@ func regularTweet() {
 	//Atae
 	text = atae[0].Date + "\n" + atae[0].Text + atae[0].URL + " " + atae[0].Tags
 	err = api.ImageURLTweet(text, atae[0].Image)
+	if err != nil {
+		fmt.Printf("err :%v\n", err)
+	}
+	fmt.Printf("%s\n", text)
+	time.Sleep(7200 * time.Second)
+	//AAA
+	text = aaa[0].Date + "\n" + aaa[0].Text + aaa[0].URL + " " + aaa[0].Tags
+	err = api.ImageTweet(text, aaa[0].Image)
 	if err != nil {
 		fmt.Printf("err :%v\n", err)
 	}

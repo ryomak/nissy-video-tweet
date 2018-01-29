@@ -2,10 +2,14 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"math/rand"
+	"net/http"
+	"os"
 	"strconv"
 	"time"
 
+	"github.com/gorilla/mux"
 	"github.com/ryomak/nissy-video-tweet/twitter"
 )
 
@@ -21,10 +25,19 @@ var musicName []string = []string{
 }
 
 func main() {
+	/*=======heroku用====*/
+	port := os.Getenv("PORT")
+	r := mux.NewRouter()
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello Golang")
+	})
+	log.Fatal(http.ListenAndServe(":"+port, r))
+	/*==================*/
 	go VideoTweet()
 	for {
 		regularTweet()
 	}
+
 }
 
 func VideoTweet() {

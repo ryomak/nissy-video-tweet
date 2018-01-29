@@ -83,7 +83,7 @@ func regularTweet() {
 	time.Sleep(7200 * time.Second)
 	//Atae
 	text = atae[0].Date + "\n" + atae[0].Text + atae[0].URL + " " + atae[0].Tags
-	err = api.ImageTweet(text, atae[0].Image)
+	err = api.ImageURLTweet(text, atae[0].Image)
 	if err != nil {
 		fmt.Printf("err :%v\n", err)
 	}
@@ -111,7 +111,7 @@ func regularTweet() {
 	//Atae(random)
 	rNum = rand.Intn(len(atae))
 	text = atae[rNum].Date + "\n" + atae[rNum].Text + atae[rNum].URL + " " + atae[rNum].Tags
-	err = api.ImageTweet(text, atae[rNum].Image)
+	err = api.ImageURLTweet(text, atae[rNum].Image)
 	if err != nil {
 		fmt.Printf("err :%v\n", err)
 	}

@@ -4,6 +4,7 @@ import (
 	"encoding/base64"
 	"fmt"
 	"io/ioutil"
+	"net/http"
 	"net/url"
 	"os"
 	"time"
@@ -90,4 +91,30 @@ func (u *User) ImageTweet(text, filepath string) error {
 	}
 	fmt.Printf("tweet :%s\n", text)
 	return nil
+}
+
+func (u *User) ImageURLTweet(text, URL string) error {
+	var client http.Client
+	resp, err := client.Get(URL)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	byteMedia, err := ioutil.ReadAll(resp.Body)
+	base64Image := base64.StdEncoding.EncodeToString(byteMedia)
+	media, err := u.API.UploadMedia(base64Image)
+	if err != nil {
+		return err
+	}
+
+	v := url.Values{}
+	v.Add("media_ids", media.MediaIDString)
+	if _, err = u.API.PostTweet(text, v); err != nil {
+		return err
+	}
+
+	fmt.Printf("tweet :%s\n", text)
+	return nil
+
 }

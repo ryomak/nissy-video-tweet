@@ -24,6 +24,12 @@ var musicName []string = []string{
 }
 
 func main() {
+	go VideoTweet()
+	go func() {
+		for {
+			regularTweet()
+		}
+	}()
 	/*=======heroku用====*/
 	port := os.Getenv("PORT")
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -31,10 +37,6 @@ func main() {
 	})
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 	/*==================*/
-	go VideoTweet()
-	for {
-		regularTweet()
-	}
 
 }
 
